@@ -14,7 +14,7 @@ class Interface:
         button8 =self.made_button(8)
         button9 =self.made_button(9)
         button_delete =self.made_button(u'\u232B', typing=False)
-        button4 =self.made_button(4)
+        button4 =self.made_button(4) 
         button5 =self.made_button(5)
         button6 =self.made_button(6)
         button_divide =self.made_button(u'\u00F7')
