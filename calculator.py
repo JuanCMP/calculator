@@ -1,4 +1,4 @@
-from tkinter import Tk, Text, Button ,END, re
+from tkinter import Tk, Text, Button ,END, re, Label
 
 class Interface:
     
@@ -8,6 +8,7 @@ class Interface:
         self.window.title("Calculator")
         self.display = Text(window, state="disabled", width=28, height=3, background="snow", foreground="black", font=("Helvetica",15))
         self.display.grid(row=0, column=0, columnspan=4, padx=5, pady=5) 
+        Label(window, text="scientific calculator", font=("Terminal",10)).grid(row=1, columnspan=3)
         self.operation = ''
         
         button7 = self.made_button(7)
@@ -29,29 +30,45 @@ class Interface:
         button_equals = self.made_button('=', typing=False, width=5, height=1)
         
         #New features
-        button_sroot = None
-        button_pow = None
-        button_percentaje = None
-        button_sin = None
-        button_cos = None
-        button_tan = None
-        button_log = None
-        button_ln = None
-        button_fac = None
-        button_obrackets = None
-        button_cbrackets = None
-        button_pi = None
-        button_euler = None 
+        button_sroot = self.made_button(u'\u221A', typing = False)
+        button_pow = self.made_button(u'\u02C4')
+        button_percentaje = self.made_button(u'\u0025', typing=False)
+        button_sin = self.made_button('sin')
+        button_cos = self.made_button('cos')
+        button_tan = self.made_button('tan')
+        button_log = self.made_button('log')
+        button_ln = self.made_button('ln')
+        button_fac = self.made_button('!')
+        button_obrackets = self.made_button('(')
+        button_cbrackets = self.made_button(')')
+        button_pi = self.made_button(u'\u03C0')
+        button_euler = self.made_button(u'\u212F')
         
+
+        buttons = [
+            button_log, button_ln, button_fac, button_percentaje,
+            button_obrackets, button_cbrackets, button_pi, button_euler,
+            button_sroot, button_pow, button_dot, button_divide,
+            button7, button8, button9, button_mult,
+            button4, button5, button6, button_sub,
+            button1, button2, button3, buttonsum,
+            button0, button_equals,button_sin, button_cos, button_tan, button_delete   
+            ]
         
-        buttons = [button7,button8,button9,button_delete,button4,button5,button6,button_divide,button1,button2,button3,button_mult,button_dot,button0,buttonsum,button_sub,button_equals]
+        buttons[26].grid(row=2, column=0) #sen
+        buttons[27].grid(row=2, column=1) #cos
+        buttons[28].grid(row=2, column=2) #tan
+        buttons[29].grid(row=2, column=3) # del
+
         counter=0
-        for row in range(1, 5):
+        for row in range(3, 9):
             for column in range(4):
                 buttons[counter].grid(row=row, column=column)
                 counter += 1
-        buttons[16].grid(row=5, column=3)
-        return
+        return 
+        
+        
+
        
     
     def made_button(self, value, typing=True, width=5, height=1):
