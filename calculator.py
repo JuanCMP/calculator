@@ -28,6 +28,22 @@ class Interface:
         button_sub = self.made_button('-')
         button_equals = self.made_button('=', typing=False, width=5, height=1)
         
+        #New features
+        button_sroot = None
+        button_pow = None
+        button_percentaje = None
+        button_sin = None
+        button_cos = None
+        button_tan = None
+        button_log = None
+        button_ln = None
+        button_fac = None
+        button_obrackets = None
+        button_cbrackets = None
+        button_pi = None
+        button_euler = None 
+        
+        
         buttons = [button7,button8,button9,button_delete,button4,button5,button6,button_divide,button1,button2,button3,button_mult,button_dot,button0,buttonsum,button_sub,button_equals]
         counter=0
         for row in range(1, 5):
