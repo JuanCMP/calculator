@@ -8,7 +8,7 @@ class Interface:
         self.window.title("Calculator")
         self.display = Text(window, state="disabled", width=28, height=3, background="snow", foreground="black", font=("Helvetica",15))
         self.display.grid(row=0, column=0, columnspan=4, padx=5, pady=5) 
-        Label(window, text="scientific calculator", font=("Terminal",10)).grid(row=1, columnspan=3)
+        Label(window, text="scientific calculator", font=("Terminal",10)).grid(row=1, columnspan=2)
         self.operation = ''
         
         button7 = self.made_button(7)
@@ -66,10 +66,7 @@ class Interface:
                 buttons[counter].grid(row=row, column=column)
                 counter += 1
         return 
-        
-        
-
-       
+         
     
     def made_button(self, value, typing=True, width=5, height=1):
         return Button(self.window, text=value, width=width, height=height, font=('Helvetica', 15), command=lambda:self.click(value, typing), activebackground='gray2', activeforeground='green2', relief='groove')
