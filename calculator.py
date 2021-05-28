@@ -10,6 +10,7 @@ class Interface:
         self.display = Text(window, state="disabled", width=28, height=3, background="snow", foreground="black", font=("Helvetica",15))
         self.display.grid(row=0, column=0, columnspan=4, padx=5, pady=5) 
         Label(window, text="scientific calculator", font=("Terminal",10)).grid(row=1, columnspan=2)
+        self.window.iconbitmap(r"C:\Users\Juan Pimentel\Desktop\c___logo_VEU_icon.ico")
         self.operation = ''
         
         button7 = self.made_button(7)
