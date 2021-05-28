@@ -1,4 +1,5 @@
 from tkinter import Tk, Text, Button ,END, re, Label
+import math
 
 class Interface:
     
@@ -30,7 +31,7 @@ class Interface:
         button_equals = self.made_button('=', typing=False, width=5, height=1)
         
         #New features
-        button_sroot = self.made_button(u'\u221A', typing = False)
+        button_sroot = self.made_button(u'\u221A')
         button_pow = self.made_button(u'\u02C4')
         button_percentaje = self.made_button(u'\u0025', typing=False)
         button_sin = self.made_button('sin')
@@ -43,6 +44,7 @@ class Interface:
         button_cbrackets = self.made_button(')')
         button_pi = self.made_button(u'\u03C0')
         button_euler = self.made_button(u'\u212F')
+        button_comma = self.made_button(u'\u002C')
         
 
         buttons = [
@@ -52,13 +54,16 @@ class Interface:
             button7, button8, button9, button_mult,
             button4, button5, button6, button_sub,
             button1, button2, button3, buttonsum,
-            button0, button_equals,button_sin, button_cos, button_tan, button_delete   
+            button0, button_equals,button_sin, button_cos, button_tan, button_delete, button_comma   
             ]
         
+        buttons[24].grid(row=9, column=0) # 0
+        buttons[25].grid(row=9, column=2, columnspan=3, ipadx=30) # '='
         buttons[26].grid(row=2, column=0) #sen
         buttons[27].grid(row=2, column=1) #cos
         buttons[28].grid(row=2, column=2) #tan
         buttons[29].grid(row=2, column=3) # del
+        button_comma.grid(row=9, column=1)
 
         counter=0
         for row in range(3, 9):
@@ -75,8 +80,18 @@ class Interface:
     def click(self,text,typing):
         
         if not typing:
-            if text=="=" and self.operation!="":
-                self.operation=re.sub(u"\u00F7", "/", self.operation)
+            if text == "=" and self.operation != "":
+                self.operation = re.sub(u"\u00F7", "/", self.operation)
+                self.operation = re.sub('sin', 'math.sin', self.operation)
+                self.operation = re.sub('cos', 'math.cos', self.operation)
+                self.operation = re.sub('tan', 'math.tan', self.operation)
+                self.operation = re.sub('log', 'math.log', self.operation)
+                self.operation = re.sub('!', 'math.factorial', self.operation)
+                self.operation = re.sub(u"\u0025", 'self.operation/100', self.operation)
+                self.operation = re.sub(u'\u03C0', 'math.pi', self.operation)
+                self.operation = re.sub(u'\u212F', 'math.e', self.operation)                
+                self.operation = re.sub(u'\u221A', 'math.sqrt', self.operation)
+                self.operation = re.sub(u'\u02C4', 'math.pow', self.operation)
                 result=str(eval(self.operation))
                 self.operation=""
                 self.displayClear()
